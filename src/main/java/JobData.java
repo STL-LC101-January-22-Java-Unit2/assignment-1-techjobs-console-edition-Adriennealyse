@@ -93,7 +93,7 @@ public class JobData {
      * @return      List of all jobs with at least one field containing the value
      */
     public static ArrayList<HashMap<String, String>> findByValue(String value) {
-        System.out.println("Within findByValue()");
+        //System.out.println("Within findByValue()");
         // load data, if not already loaded, within allJobs
         loadData();
 
