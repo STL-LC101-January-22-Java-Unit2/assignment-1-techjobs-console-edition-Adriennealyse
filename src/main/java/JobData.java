@@ -5,10 +5,9 @@ import org.apache.commons.csv.CSVRecord;
 import java.io.FileReader;
 import java.io.IOException;
 import java.io.Reader;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.List;
+import java.util.*;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 /**
  * Created by LaunchCode
@@ -94,12 +93,46 @@ public class JobData {
      * @return      List of all jobs with at least one field containing the value
      */
     public static ArrayList<HashMap<String, String>> findByValue(String value) {
-
-        // load data, if not already loaded
+        System.out.println("Within findByValue()");
+        // load data, if not already loaded, within allJobs
         loadData();
 
         // TODO - implement this method
-        return null;
+
+        //for(Map<String, String> map : someJobs)
+
+        ArrayList<HashMap<String, String>> jobsValue = new ArrayList<>();
+
+        ///////
+        for (HashMap<String, String> row : allJobs) {
+
+            //String job = row.entrySet();
+
+            //if (row.getKey().containsKey(value)) {
+                //System.out.println("Line printed");
+                //jobsValue.add(row);
+            //}
+            //
+            row.entrySet().forEach(entry -> {
+                // if ( entry.getKey().toString().contains(value)) {
+                if (entry.getKey().toString().toLowerCase().indexOf(value.toLowerCase()) != -1 || entry.getValue().toString().toLowerCase().indexOf(value.toLowerCase()) != -1 ) {
+                    if (!jobsValue.contains(row)) {
+                        jobsValue.add(row);
+                    }
+
+                // }
+                    //jobsValue.add(row);
+                    //System.out.println("FOUND MATCH :: Key : " + entry.getKey().toString() + " Value : " + entry.getValue());
+                } else {
+                    //System.out.println("CHECK" + entry.getValue().toString() + "<<" + value + ">>"  );
+                }
+            });
+
+
+        }
+
+
+        return jobsValue;
     }
 
     /**
