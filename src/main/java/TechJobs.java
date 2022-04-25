@@ -120,6 +120,50 @@ public class TechJobs {
     // Print a list of jobs
     private static void printJobs(ArrayList<HashMap<String, String>> someJobs) {
 
-        System.out.println("printJobs is not implemented yet");
+
+        //System.out.println("Size : " + someJobs.size());
+        if (someJobs.size() == 0) {
+            System.out.print("No Results");
+            return;
+        }
+
+        int totalJobs = someJobs.size();
+        System.out.println();
+        // Use the Map to get key-value pairs
+        for(Map<String, String> map : someJobs) {
+            // Returns a Set of the keys contained in this map
+            System.out.println("*****");
+            for(String key : map.keySet()) {
+                System.out.println(key + ": " + map.get(key));
+                //System.out.println("*****");
+
+            }
+            totalJobs--;
+            System.out.println("*****");
+            if ( totalJobs > 0 ) {
+                System.out.println();
+            }
+
+
+        }
+
+
+
+        /*
+        for (int i = 0; i < someJobs.size(); i++) {
+            HashMap<String,String> localHash = someJobs.get(i);
+            // HashMap<String, String> localValues = someJobs.get(i).values();
+            System.out.println("I Index : " + localHash.get("Java") );
+            for (int j = 0; j < i; j++) {
+                // System.out.println(someJobs.indexOf(j)   );
+            }
+
+            //System.out.println(i);
+        }
+        */
+
+
+        // System.out.println("printJobs is not implemented yet");
     }
+
 }
