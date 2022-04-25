@@ -121,12 +121,13 @@ public class TechJobs {
     private static void printJobs(ArrayList<HashMap<String, String>> someJobs) {
 
 
-
-        if (someJobs == null) {
-            System.out.println("No results found");
+        //System.out.println("Size : " + someJobs.size());
+        if (someJobs.size() == 0) {
+            System.out.print("No Results");
             return;
         }
 
+        int totalJobs = someJobs.size();
         System.out.println();
         // Use the Map to get key-value pairs
         for(Map<String, String> map : someJobs) {
@@ -137,7 +138,11 @@ public class TechJobs {
                 //System.out.println("*****");
 
             }
+            totalJobs--;
             System.out.println("*****");
+            if ( totalJobs > 0 ) {
+                System.out.println();
+            }
 
 
         }
